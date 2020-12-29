@@ -1,17 +1,21 @@
 class Book
-  attr_reader:author_first_name,:author_last_name, :title, :publication_date
-  def initialize(details)
-    @author_first_name = details[:author_first_name]
-    @author_last_name = details[:author_last_name]
-    @title = details[:title]
-    @publication_date = details[:publication_date]
+  attr_reader:title,
+             :first_name,
+             :last_name,
+             :publication_date
+  def initialize(data)
+    @title = data[:title]
+    @first_name = data[:author_first_name]
+    @last_name = data[:author_last_name]
+    @publication_date = data[:publication_date]
+
   end
 
   def author
-    @author_first_name +" " + @author_last_name
+    @first_name + " " + @last_name
   end
 
   def publication_year
-    @publication_date.delete_prefix("July 11, ")
+    @publication_date.split("").last(4).join("")
   end
 end
